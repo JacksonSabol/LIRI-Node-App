@@ -13,6 +13,9 @@ var keys = require("./keys.js");
 // Import Request module
 var request = require('request');
 
+// Import Moment.js
+var moment = require('moment');
+
 // Example from documentation
 // request('http://www.google.com', function (error, response, body) {
 //   console.log('error:', error); // Print the error if one occurred
@@ -73,8 +76,8 @@ if (userCommand === "concert-this") {
             console.log(concertData[i].venue.name);
             // Log the location of each venue at which an artist is playing
             console.log(concertData[i].venue.city + ", " + concertData[i].venue.region);
-            // Log the date of each event using a standardized MM/DD/YYYY format (add Moment.js after testing)
-            console.log(concertData[i].datetime);
+            // Log the date of each event using a standardized MM/DD/YYYY format
+            console.log(moment(concertData[i].datetime, "YYYY-MM-DDTHh:mm:ss").format("MM/DD/YYYY"));
         }
     });
 }
