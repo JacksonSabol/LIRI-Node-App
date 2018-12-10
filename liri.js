@@ -58,4 +58,36 @@ console.log(BiTKey.apikey);
 //     }
 //  console.log(data);
 
-// OMDB: var omdbUrl = "http://www.omdbapi.com/?&t=" + <query-variable> + "&apikey=" + omdb.apikey;
+// OMDB: 
+var omdbURL = "http://www.omdbapi.com/?&t=" + userQuery + "&apikey=" + omdb.apikey;
+
+// Query OMDB for user's input 
+request(omdbURL, function (error, response, body) {
+    // Log potential errors
+    console.log('Error:' + error);
+    // Assign a variable to hold the parsed data returned from the API call
+    var movieData = JSON.parse(body);
+    // Log movieData object for testing
+    // console.log(movieData);
+    // Assign variable to hold the queried movie title
+    var title = ("Title: " + movieData.Title);
+    // Assign variable to hold the queried movie release year
+    var year = ("Year: " + movieData.Year);
+    // Assign varaible to hold the queried movie IMDB rating
+    var imdbRating = ("IMDB Rating: " + movieData.imdbRating);
+    // Assign variable to hold the queried movie Rotten Tomatoes rating
+    var rtRating = ("Rotten Tomatoes Rating: " + movieData.Ratings[1].Value);
+    // Assign variable to hold the queried movie country of origin
+    var country = ("Country: " + movieData.Country);
+    // Assign variable to hold the queried movie language
+    var language = ("Language: " + movieData.Language);
+    // Assign variable to hold the queried movie plot
+    var plot = ("Plot: " + movieData.Plot);
+    // Assign variable to hold the queried movie actors
+    var actors = ("Actors: " + movieData.Actors);
+    // Assign variable to hold all of the movie data saved to log it with new lines
+    var movieDataCombined = (title + '\n' + year + '\n' + imdbRating + '\n' + rtRating + '\n' + country + '\n' +
+        language + '\n' + plot + '\n' + actors + '\n' + '---' + '\n');
+    // Log movie 
+    console.log(movieDataCombined);
+});
