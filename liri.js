@@ -4,9 +4,6 @@ var fs = require("fs");
 // Require dotenv to read and set any environment variables with the dotenv package
 require("dotenv").config();
 
-// Import Spotify API Node Modules
-var Spotify = require('node-spotify-api');
-
 // Import keys
 var keys = require("./keys.js");
 
@@ -27,17 +24,16 @@ var moment = require('moment');
 // Assign variable to hold the command the user would like to execute
 var userCommand = process.argv[2];
 // Assign variable to hold the user's query to pass into API calls - irrespective of the number of arguments passed (words user inputted)
-var userQuery = process.argv.slice(3).toString().split(',').join(' ');
+var userQuery = process.argv.slice(3).toString().split(",").join(" ");
 // Log for testing
-console.log(userCommand);
-console.log(userQuery);
+console.log("Your command: " + userCommand);
+console.log("Your query: " + userQuery);
 
 // Assign variable to hold Spotify keys information
-var spotify = new Spotify(keys.spotify);
+var spotifyKeys = keys.spotify;
+
 // Log for testing
-// console.log(spotify);
-console.log(spotify.credentials.id);
-console.log(spotify.credentials.secret);
+// console.log(spotifyKeys);
 
 // Assign variable to hold OMDB API key
 var omdb = keys.omdb;
@@ -48,7 +44,7 @@ var omdb = keys.omdb;
 var BiTKey = keys.bandsInTown;
 // Log for testing
 // console.log(BiTKey);
-console.log(BiTKey.apikey);
+// console.log(BiTKey.apikey);
 
 // API query URLs/methods:
 
@@ -57,6 +53,8 @@ console.log(BiTKey.apikey);
 //     return console.log('Error occurred: ' + error);
 //     }
 //  console.log(data);
+
+// Structuring this way to make sure it work, then it'll be easy to transition to a switch/case statement to call these as functions
 
 // Check user's command - if it's 'concert-this' make the call to the Bands In Town API with their query
 if (userCommand === "concert-this") {
@@ -69,7 +67,7 @@ if (userCommand === "concert-this") {
         // Assign a variable to hold the parsed data returned from the API call
         var concertData = JSON.parse(body);
         // Log concertData object for testing
-        console.log(concertData);
+        // console.log(concertData);
         // Iterate through the array of objects returned by the API call to log relevant information
         for (var i = 0; i < concertData.length; i++) {
             // Log the name of each venue at which an artist is playing
@@ -83,9 +81,56 @@ if (userCommand === "concert-this") {
         }
     });
 }
+// Check user's command - if it's 'spotify-this-song' make the call to the Spotify API with their query
+else if (userCommand === 'spotify-this-song') {
+    // Assign 
+    // Import Spotify API Node Modules
+    var Spotify = require('node-spotify-api');
+    // Assign variable to send Spotify keys to Spotify constructor function (defined in Spotify node module)
+    var spotify = new Spotify({
+        id: spotifyKeys.id,
+        secret: spotifyKeys.secret
+    });
 
+    // If the user doesn't enter a song title, default to 'The Sign' by Ace of Base
+    if (userQuery === "") {
+        userQuery = "the sign";
+    }
+    // Search Spotify for the userQuery
+    spotify.search({ type: "track", query: userQuery }, function (error, data) {
+        // Check for errors
+        if (error) {
+            return console.log("Error: " + error);
+        }
+        // Iterate through the array of objects returned by the API call to log relevant information
+        for (var i = 0; i < data.tracks.items.length; i++) {
+            // Assign variable to hold the tracks response
+            var trackInfo = data.tracks.items[i];
+            // Make sure only 'The Sign' by Ace of Base displays, which is the first result (index 0) when userQuery = "the sign"
+            if ((userQuery === "the sign") && (trackInfo.artists[0].name !== "Ace of Base")) {
+                // Do nothing to prevent matches from artists that are not Ace of Base
+            }
+            else {
+                // Assign variable to hold the queried song's artist name
+                var songArtist = ("Artist: " + trackInfo.artists[0].name);
+                // Assign variable to hold the queried song's title
+                var songTitle = ("Song Name: " + trackInfo.name);
+                // Assign variable to hold the queried song's preview URL
+                var songPreviewURL = ("Preview Song: " + trackInfo.preview_url);
+                // Assign variable to hold the queried song's album 
+                var songAlbum = ("From Album: " + trackInfo.album.name);
+                // Assign all song information to a variable to be logged to the command line
+                var songDataCombined = (songArtist + '\n' + songTitle + '\n' + songPreviewURL + '\n' + songAlbum + '\n');
+                //display to console and call function to log to log.txt
+                console.log(songDataCombined);
+                // Add a space between entries
+                console.log("------------\n");
+            }
+        }
+    });
+}
 // Check user's command - if it's 'movie-this' make the call to the OMDB API with their query
-if (userCommand === "movie-this") {
+else if (userCommand === "movie-this") {
     // Instantiate the URL for making an API call to OMDB
     var omdbURL = "http://www.omdbapi.com/?&t=" + userQuery + "&apikey=" + omdb.apikey;
     // Query OMDB for user's input 
@@ -113,9 +158,10 @@ if (userCommand === "movie-this") {
         // Assign variable to hold the queried movie actors
         var actors = ("Actors: " + movieData.Actors);
         // Assign variable to hold all of the movie data saved to log it with new lines
-        var movieDataCombined = (title + '\n' + year + '\n' + imdbRating + '\n' + rtRating + '\n' + country + '\n' +
-            language + '\n' + plot + '\n' + actors + '\n' + '---' + '\n');
+        var movieDataCombined = (title + "\n" + year + "\n" + imdbRating + "\n" + rtRating + "\n" + country + "\n" + language + "\n" + plot + "\n" + actors + "\n");
         // Log movie 
         console.log(movieDataCombined);
+        // Add a space after entry
+        console.log("------------");
     });
 }
