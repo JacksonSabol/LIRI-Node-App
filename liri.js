@@ -64,6 +64,8 @@ function concertThis(query) {
             var concertDataCombined = (venueName + "\n" + venueLocation + "\n" + eventDate + "\n" + spacer + "\n");
             // Log event information
             console.log(concertDataCombined);
+            // Invoke logData function and pass it the concert data
+            logData(concertDataCombined);
         }
     });
 }
@@ -110,6 +112,8 @@ function spotifyThis(query) {
                 var songDataCombined = (songArtist + "\n" + songTitle + "\n" + songPreviewURL + "\n" + songAlbum + "\n" + spacer + "\n");
                 // Log song information
                 console.log(songDataCombined);
+                // Invoke logData function and pass it the song data
+                logData(songDataCombined);
             }
         }
     });
@@ -152,6 +156,8 @@ function movieThis(query) {
         var movieDataCombined = (title + "\n" + year + "\n" + imdbRating + "\n" + rtRating + "\n" + country + "\n" + language + "\n" + plot + "\n" + actors + "\n" + spacer + "\n");
         // Log movie 
         console.log(movieDataCombined);
+        // Invoke logData function and pass it the movie data
+        logData(movieDataCombined);
     });
 }
 // If userCommend is 'do-what-it-says', read the random.txt file to parse the information inside it and pass it to the spotify-this-song function
@@ -165,7 +171,18 @@ function doWhatItSays() {
         var dataArray = data.split(",");
         // Assign a variable to the song name from the text file to pass to the spotifyThis function
         var randomSong = dataArray[1];
+        // Invoke logData function and pass it "Exception: Do What It Says" to mark that the next spotifyThis entry was from random.txt
+        logData("--Exception: Do What It Says--\n");
         // Invoke spotify-this-song and pass it the randomSong from the text file
         spotifyThis(randomSong);
+    });
+}
+// Add function to append data to log.txt
+function logData(data) {
+    // Append data to existing file 'log.txt' or create it if it does not exist
+    fs.appendFile("log.txt", data, function (error) {
+        if (error) {
+            return console.log(error);
+        }
     });
 }
