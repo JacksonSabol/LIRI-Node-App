@@ -150,7 +150,7 @@ function movieThis(query) {
         var plot = ("Plot: " + movieData.Plot);
         // Assign variable to hold the queried movie actors
         var actors = ("Actors: " + movieData.Actors);
-        // Add a space between entries
+        // Add a separator between entries
         var spacer = "------------";
         // Assign variable to hold all of the movie data saved to log it with new lines
         var movieDataCombined = (title + "\n" + year + "\n" + imdbRating + "\n" + rtRating + "\n" + country + "\n" + language + "\n" + plot + "\n" + actors + "\n" + spacer + "\n");
@@ -181,6 +181,7 @@ function doWhatItSays() {
 function logData(data) {
     // Append data to existing file 'log.txt' or create it if it does not exist
     fs.appendFile("log.txt", data, function (error) {
+        // Check for errors
         if (error) {
             return console.log(error);
         }
