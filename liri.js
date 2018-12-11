@@ -53,10 +53,16 @@ function concertThis(query) {
         if (error) {
             return console.log("Error: " + error);
         }
+        // Assign a variable to limit the number of responses logged to the command line
+        var limitResponses = 10;
         // Assign a variable to hold the parsed data returned from the API call
         var concertData = JSON.parse(body);
+        // Check if queried artist has at least 10 responses from API call
+        if (concertData.length < 10) {
+            limitResponses = concertData.length;
+        }
         // Iterate through the array of objects returned by the API call to log relevant information
-        for (var i = 0; i < concertData.length; i++) {
+        for (var i = 0; i < limitResponses; i++) {
             // Assign variable to hold the queried artist's event venue name
             var venueName = ("Venue Name: " + concertData[i].venue.name);
             // Assign variable to hold the queried artist's event venue location
@@ -94,8 +100,14 @@ function spotifyThis(query) {
         if (error) {
             return console.log("Error: " + error);
         }
+        // Assign a variable to limit the number of responses logged to the command line
+        var limitResponses = 5;
+        // Check if queried artist has at least 5 responses from API call
+        if (data.tracks.items.length < 5) {
+            limitResponses = data.tracks.items.length;
+        }
         // Iterate through the array of objects returned by the API call to log relevant information
-        for (var i = 0; i < data.tracks.items.length; i++) {
+        for (var i = 0; i < limitResponses; i++) {
             // Assign variable to hold the tracks response
             var trackInfo = data.tracks.items[i];
             // Make sure only 'The Sign' by Ace of Base displays, which is the first result (index 0) when query = "the sign"
@@ -190,7 +202,7 @@ function logData(data) {
     fs.appendFile("log.txt", data, function (error) {
         // Check for errors
         if (error) {
-            return console.log(error);
+            return console.log("Error: " + error);
         }
     });
 }

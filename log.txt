@@ -634,3 +634,102 @@ Song Name: I Want It That Way
 Preview Song: null
 From Album: Punk Goes Pop
 ------------
+Venue Name: House of Blues New Orleans presented by Cricket Wireless
+Venue Location: New Orleans, LA
+Event Date: 12/14/2018
+------------
+Venue Name: House of Blues Las Vegas
+Venue Location: Las Vegas, NV
+Event Date: 01/23/2019
+------------
+Venue Name: House of Blues Las Vegas
+Venue Location: Las Vegas, NV
+Event Date: 01/26/2019
+------------
+Venue Name: House of Blues Las Vegas
+Venue Location: Las Vegas, NV
+Event Date: 01/27/2019
+------------
+Venue Name: House of Blues Las Vegas
+Venue Location: Las Vegas, NV
+Event Date: 01/30/2019
+------------
+Venue Name: House of Blues Las Vegas
+Venue Location: Las Vegas, NV
+Event Date: 02/02/2019
+------------
+Venue Name: Foro Sol
+Venue Location: Mexico, 
+Event Date: 03/16/2019
+------------
+Venue Name: House of Blues Las Vegas
+Venue Location: Las Vegas, NV
+Event Date: 02/01/2019
+------------
+Venue Name: House of Blues Las Vegas
+Venue Location: Las Vegas, NV
+Event Date: 01/31/2019
+------------
+Venue Name: House of Blues Las Vegas
+Venue Location: Las Vegas, NV
+Event Date: 01/25/2019
+------------
+Venue Name: Marble Factory
+Venue Location: Bristol, 
+Event Date: 12/14/2018
+------------
+Venue Name: O2 Academy Brixton
+Venue Location: London, 
+Event Date: 12/15/2018
+------------
+Artist: Iron Maiden
+Song Name: Run to the Hills - 1998 Remastered Version
+Preview Song: https://p.scdn.co/mp3-preview/9372d716c78d22555cb3bcaacd0f7801a37ae60e?cid=881855ded59c4823ba57b35f0353a75c
+From Album: The Number of the Beast (1998 Remastered Version)
+------------
+Artist: Iron Maiden
+Song Name: Run to the Hills - 1998 Remastered Version
+Preview Song: https://p.scdn.co/mp3-preview/e3a4f1ac537f7126e24f30c3ae1e40fbb5498501?cid=881855ded59c4823ba57b35f0353a75c
+From Album: Somewhere Back In Time - The Best of 1980-1989
+------------
+Artist: Rockabye Baby!
+Song Name: Run to the Hills
+Preview Song: https://p.scdn.co/mp3-preview/5a15d3656e8685cd7ef7d6697fe06060605b71bc?cid=881855ded59c4823ba57b35f0353a75c
+From Album: Lullaby Renditions of Iron Maiden
+------------
+Artist: Steve ´n´ Seagulls
+Song Name: Run To The Hills
+Preview Song: null
+From Album: Farm Machine
+------------
+Artist: Metalachi
+Song Name: Run to the Hills
+Preview Song: https://p.scdn.co/mp3-preview/f59fce792373c3ebd44361d8573e3c95284368e4?cid=881855ded59c4823ba57b35f0353a75c
+From Album: Uno
+------------
+--Exception: Do What It Says--
+Artist: Backstreet Boys
+Song Name: I Want It That Way
+Preview Song: https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6?cid=881855ded59c4823ba57b35f0353a75c
+From Album: The Hits--Chapter One
+------------
+Artist: Dynamite Boy
+Song Name: I Want It That Way
+Preview Song: null
+From Album: Punk Goes Pop
+------------
+Artist: Backstreet Boys
+Song Name: I Want It That Way
+Preview Song: https://p.scdn.co/mp3-preview/b8c2410a5acb68b462be6ac85f1312430e2b149c?cid=881855ded59c4823ba57b35f0353a75c
+From Album: Millennium
+------------
+Artist: Tyler and Mark
+Song Name: I Want It That Way
+Preview Song: https://p.scdn.co/mp3-preview/99c791194bbd4e5f315ca8964babf0b69bc520b3?cid=881855ded59c4823ba57b35f0353a75c
+From Album: Beautiful Dreams
+------------
+Artist: Anthem Lights
+Song Name: I Want It That Way
+Preview Song: https://p.scdn.co/mp3-preview/4a163fbfa2dbbe4433f277e0e7395dca656364f5?cid=881855ded59c4823ba57b35f0353a75c
+From Album: Covers Part IV
+------------
