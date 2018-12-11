@@ -69,7 +69,7 @@ if (userCommand === "concert-this") {
         // Assign a variable to hold the parsed data returned from the API call
         var concertData = JSON.parse(body);
         // Log concertData object for testing
-        // console.log(concertData);
+        console.log(concertData);
         // Iterate through the array of objects returned by the API call to log relevant information
         for (var i = 0; i < concertData.length; i++) {
             // Log the name of each venue at which an artist is playing
@@ -78,6 +78,8 @@ if (userCommand === "concert-this") {
             console.log(concertData[i].venue.city + ", " + concertData[i].venue.region);
             // Log the date of each event using a standardized MM/DD/YYYY format
             console.log(moment(concertData[i].datetime, "YYYY-MM-DDTHh:mm:ss").format("MM/DD/YYYY"));
+            // Add a space between entries
+            console.log("------------");
         }
     });
 }
