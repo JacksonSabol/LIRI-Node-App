@@ -19,23 +19,28 @@ var userCommand = process.argv[2];
 // Assign variable to hold the user's query to pass into API calls - irrespective of the number of arguments passed (words user inputted)
 var userQuery = process.argv.slice(3).toString().split(",").join(" ");
 
-// Define switch-case statements to invoke each function based on userCommand
-switch (userCommand) {
-    case "concert-this":
-        concertThis(userQuery);
-        break;
+// Invoke the liri() function
+liri(userCommand, userQuery);
+// Add function to be invoked on load and by the do-what-it-says function
+function liri(command, query) {
+    // Define switch-case statements to invoke each function based on userCommand
+    switch (command) {
+        case "concert-this":
+            concertThis(query);
+            break;
 
-    case "spotify-this-song":
-        spotifyThis(userQuery);
-        break;
+        case "spotify-this-song":
+            spotifyThis(query);
+            break;
 
-    case "movie-this":
-        movieThis(userQuery);
-        break;
+        case "movie-this":
+            movieThis(query);
+            break;
 
-    case "do-what-it-says":
-        doWhatItSays();
-        break;
+        case "do-what-it-says":
+            doWhatItSays();
+            break;
+    }
 }
 
 // If userCommand is 'concert-this' make the call to the Bands In Town API with their query
@@ -169,12 +174,14 @@ function doWhatItSays() {
         }
         // Split array to isolate the song name from random.txt
         var dataArray = data.split(",");
+        // Assign a variable to hold the random command from the text file
+        var randomCommand = dataArray[0];
         // Assign a variable to the song name from the text file to pass to the spotifyThis function
-        var randomSong = dataArray[1];
-        // Invoke logData function and pass it "Exception: Do What It Says" to mark that the next spotifyThis entry was from random.txt
+        var randomQuery = dataArray[1];
+        // Invoke logData function and pass it "--Exception: Do What It Says--" to mark that the next spotifyThis entry was from random.txt
         logData("--Exception: Do What It Says--\n");
-        // Invoke spotify-this-song and pass it the randomSong from the text file
-        spotifyThis(randomSong);
+        // Invoke the liri() function and pass it the randomCommand and the randomQuery from the text file
+        liri(randomCommand, randomQuery);
     });
 }
 // Add function to append data to log.txt
