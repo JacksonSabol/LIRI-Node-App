@@ -169,3 +169,22 @@ else if (userCommand === "movie-this") {
         console.log("------------");
     });
 }
+// Check user's command - if it's 'do-what-it-says', read the random.txt file to * eventually invoke the spotify-this-song function
+else if (userCommand === 'do-what-it-says') {
+    // readFile random.txt to run spotify search
+    fs.readFile("random.txt", "utf8", function (error, data) {
+        if (error) {
+            return console.log(error);
+        }
+        // Log for testing
+        console.log(data);
+        // Split array to isolate the song name from random.txt
+        var dataArray = data.split(",");
+        // Reassign userQuery to the song name from the text file to pass to the future function
+        userQuery = dataArray[1];
+        // Log for testing
+        console.log(userQuery);
+        // Invoke spotify-this-song when JavaScript is restructured
+
+    });
+}
