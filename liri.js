@@ -131,6 +131,10 @@ else if (userCommand === 'spotify-this-song') {
 }
 // Check user's command - if it's 'movie-this' make the call to the OMDB API with their query
 else if (userCommand === "movie-this") {
+    // If the user doesn't enter a movie title, default to 'Mr. Nobody'
+    if (userQuery === "") {
+        userQuery = "mr-nobody";
+    }
     // Instantiate the URL for making an API call to OMDB
     var omdbURL = "http://www.omdbapi.com/?&t=" + userQuery + "&apikey=" + omdb.apikey;
     // Query OMDB for user's input 
